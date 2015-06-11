@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-    $options = getopt("i:o:n::h");
+    $options = getopt("i:o:n:t:h");
     $doc_cache = array();
     $doc_temp = emptyTemp();
 
@@ -31,7 +31,8 @@
             }
 
             /* Matches route parameters ( #! ) */
-            preg_match("/\*\s+#!\s+param:\s+([a-z_]*)->([a-z]*)\s+::\s+(.*)/", $line, $params);
+            //preg_match("/\*\s+#!\s+param:\s+([a-z_]*)->([a-z]*)\s+::\s+(.*)/", $line, $params);
+            preg_match("/\*\s+#!\s+param:\s+(.*)\s+::\s+(.*)/", $line, $params);
             if($params){
                 array_push($doc_temp["params"], $params);
                 continue;
