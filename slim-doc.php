@@ -29,6 +29,14 @@
                 $doc_temp["description"] = $description[1];
                 continue;
             }
+	    /* Matches route return ( #! ) */
+            //preg_match("/\*\s+#!\s+param:\s+([a-z_]*)->([a-z]*)\s+::\s+(.*)/", $line, $params);
+            preg_match("/\*\s+#!\s+return:\s+(.*)\s+::\s+(.*)/", $line, $return);
+            if($return){
+                array_push($doc_temp["return"], $return);
+                continue;
+            }
+
 
             /* Matches route parameters ( #! ) */
             //preg_match("/\*\s+#!\s+param:\s+([a-z_]*)->([a-z]*)\s+::\s+(.*)/", $line, $params);
@@ -76,7 +84,8 @@
     function emptyTemp(){
         return array(
             "description" => "No description",
-            "params" => Array()
+            "params" => Array(),
+            "return" => Array()
         );
     }
 

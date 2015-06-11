@@ -59,6 +59,13 @@ background-color:#DED;
 <?php } ?>
 <?php } ?>
 </table>
+<?php
+if(!empty($data["doc"]['return'])){ 
+?>
+<fieldset><legend><b>Retour : </b><?=$data["doc"]['return'][0][1]?></legend><?=$data["doc"]['return'][0][2]?></fieldset>
+<?php
+}
+?>
 <?php } ?>
 <?="\n---\n"?>
 <?php } ?>
